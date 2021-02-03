@@ -6,6 +6,8 @@ class Contact {
 
   Contact({this.name, this.phoneNumber, this.avatar});
 
+  Contact.id({this.name, this.phoneNumber, this.avatar, this.id});
+
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
     map['name'] = name;

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:phone_book/model/contact.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -36,6 +35,12 @@ class DbHelper {
   Future<int> contactAdd(Contact contact) async {
     var dbClient = await db;
     return await dbClient.insert('Contact', contact.toMap());
+  }
+
+  Future<int> contactUpdate(Contact contact) async {
+    var dbClient = await db;
+    return await dbClient.update('Contact', contact.toMap(),
+        where: "id =?", whereArgs: [contact.id]);
   }
 
   Future<void> removeAt(int id) async {
